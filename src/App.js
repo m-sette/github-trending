@@ -8,14 +8,14 @@ const App = () => {
   const [lang, setLang] = useState('')
 
   async function fetchData() {
-    const res = await axios
-      .get(
+    try {
+      const response = await axios.get(
         `https://api.github.com/search/repositories?q=language:${lang}&sort=stars&order=desc`
       )
-      .then((response) => {
-        setRepos(response.data.items)
-      })
-      .catch((e) => console.log('Error', e))
+      setRepos(response.data.items)
+    } catch (error) {
+      console.log('Error', error)
+    }
   }
 
   useEffect(() => {
