@@ -25,7 +25,11 @@ const App = () => {
   let listRepos = repos.map((repo) => {
     return (
       <div className='card' key={repo.id}>
-        <h2>{repo.full_name}</h2>
+        <h2>
+          <a href={repo.html_url} target='_blank' rel='noreferrer'>
+            {repo.full_name}
+          </a>
+        </h2>
         <p>{repo.description}</p>
       </div>
     )
